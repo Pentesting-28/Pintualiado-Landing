@@ -36,14 +36,15 @@ export function Header() {
         }`}
     >
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex items-center justify-between h-[56px] lg:h-[64px]">
+        <div className="flex items-center justify-between h-[56px] lg:h-[50px]">
           <Link href="/" className="flex items-center gap-2 sm:gap-3 transition-transform duration-300 hover:scale-105">
             <div className="relative w-[36px] h-[36px] lg:w-[44px] lg:h-[44px]">
               <Image
                 src="/logo.png"
                 alt="Pintualiado Logo"
                 fill
-                className="object-contain dark:invert"
+                className={`object-contain transition-all duration-300 ${mounted && theme === "dark" ? "brightness-125" : "brightness-[0.1] contrast-150"
+                  }`}
                 priority
               />
             </div>
