@@ -6,7 +6,7 @@ import { ArrowRight, Paintbrush, Palette, Sparkles } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden bg-background pt-20 sm:pt-24 lg:pt-0">
+    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden bg-background pt-[72px] lg:pt-[84px]">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-foreground/5 to-transparent" />
         <div className="absolute bottom-0 left-0 w-[40%] h-[60%] bg-gradient-to-tr from-accent/10 to-transparent rounded-tr-[100px] sm:rounded-tr-[200px]" />

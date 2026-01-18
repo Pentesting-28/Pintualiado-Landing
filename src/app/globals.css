@@ -25,7 +25,7 @@
   --input: #e5e5e5;
   --ring: #4a4a4a;
   --radius: 8px;
-  
+
   --brand-charcoal: #2d2d2d;
   --brand-silver: #a0a0a0;
   --brand-gold: #c4a052;
@@ -89,6 +89,7 @@
 }
 
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -99,7 +100,7 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 4.5rem;
   }
 
   body {
@@ -111,7 +112,12 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-outfit);
     color: var(--foreground);
     letter-spacing: -0.02em;

@@ -30,25 +30,24 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ease-in-out ${
-        isScrolled 
-          ? "bg-background/95 backdrop-blur-md shadow-lg py-2" 
-          : "bg-background/80 backdrop-blur-sm py-3 sm:py-4"
-      }`}
+      className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ease-in-out ${isScrolled
+        ? "bg-background/95 backdrop-blur-md shadow-lg py-1.5"
+        : "bg-background/80 backdrop-blur-sm py-2 sm:py-3"
+        }`}
     >
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex items-center justify-between h-[60px] sm:h-[70px] lg:h-[80px]">
+        <div className="flex items-center justify-between h-[56px] lg:h-[64px]">
           <Link href="/" className="flex items-center gap-2 sm:gap-3 transition-transform duration-300 hover:scale-105">
-            <div className="relative w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] lg:w-[60px] lg:h-[60px]">
+            <div className="relative w-[36px] h-[36px] lg:w-[44px] lg:h-[44px]">
               <Image
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/289096037_568244014686825_3708685445972980283_n-1768767730526.jpg?width=8000&height=8000&resize=contain"
+                src="/logo.png"
                 alt="Pintualiado Logo"
                 fill
                 className="object-contain dark:invert"
                 priority
               />
             </div>
-            <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground tracking-tight">
+            <span className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground tracking-tight">
               Pintualiado
             </span>
           </Link>
@@ -116,9 +115,8 @@ export function Header() {
       </div>
 
       <div
-        className={`fixed inset-0 bg-background/95 backdrop-blur-md z-[999] lg:hidden transition-transform duration-500 ease-in-out ${
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed inset-0 bg-background/95 backdrop-blur-md z-[999] lg:hidden transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
         style={{ top: "0", height: "100vh" }}
       >
         <div className="flex justify-end p-4 sm:p-6">
@@ -141,7 +139,7 @@ export function Header() {
               {item.name}
             </Link>
           ))}
-          
+
           <div className="flex items-center gap-4 pt-6 sm:pt-8">
             <button
               onClick={toggleTheme}
@@ -151,7 +149,7 @@ export function Header() {
               {mounted && (theme === "light" ? <Moon size={22} /> : <Sun size={22} />)}
             </button>
           </div>
-          
+
           <div className="flex space-x-6 pt-4">
             <a
               href="https://www.facebook.com/profile.php?id=100086273631425"
@@ -170,7 +168,7 @@ export function Header() {
               <Instagram size={22} />
             </a>
           </div>
-          
+
           <a
             href="tel:+584241234567"
             className="mt-6 flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-full font-medium"
