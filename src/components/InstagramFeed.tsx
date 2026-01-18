@@ -14,7 +14,7 @@ export function InstagramFeed() {
   }, []);
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-secondary">
+    <section className="py-16 sm:py-20 lg:py-24 bg-secondary dark:bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 lg:mb-12">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">
@@ -39,8 +39,8 @@ export function InstagramFeed() {
                     alt="Logo"
                     fill
                     className={`object-contain p-2 transition-all duration-300 ${mounted && theme === "dark"
-                        ? "brightness-100 contrast-100"
-                        : "brightness-[0.1] contrast-150"
+                      ? "brightness-100 contrast-100"
+                      : "brightness-[0.1] contrast-150"
                       }`}
                   />
                 </div>

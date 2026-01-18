@@ -15,7 +15,7 @@ const features = [
 
 export function AboutSection() {
   return (
-    <section id="nosotros" className="py-16 sm:py-20 lg:py-24 bg-secondary">
+    <section id="nosotros" className="py-16 sm:py-20 lg:py-24 bg-secondary dark:bg-background">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           <div className="relative order-2 lg:order-1">
@@ -42,12 +42,12 @@ export function AboutSection() {
                 Tu aliado en pinturas y acabados
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
-                En <strong className="text-foreground">Pintualiado</strong> nos dedicamos a ofrecer productos de 
-                la más alta calidad para transformar tus espacios. Contamos con un 
+                En <strong className="text-foreground">Pintualiado</strong> nos dedicamos a ofrecer productos de
+                la más alta calidad para transformar tus espacios. Contamos con un
                 equipo de profesionales dispuestos a asesorarte.
               </p>
               <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-                Desde pinturas para interiores y exteriores hasta esmaltes, 
+                Desde pinturas para interiores y exteriores hasta esmaltes,
                 impermeabilizantes y acabados especiales.
               </p>
             </div>

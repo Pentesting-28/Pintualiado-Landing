@@ -5,17 +5,17 @@ import { Phone, Mail, MapPin, Clock, Send, Facebook, Instagram } from "lucide-re
 
 export function ContactSection() {
   return (
-    <section id="contacto" className="py-16 sm:py-20 lg:py-24 bg-foreground">
+    <section id="contacto" className="py-16 sm:py-20 lg:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-          <div className="text-background">
+          <div className="text-foreground">
             <span className="inline-block text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">
               Contacto
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
               ¿Tienes alguna pregunta?
             </h2>
-            <p className="text-background/70 text-base sm:text-lg mb-8 sm:mb-10 lg:mb-12 leading-relaxed">
+            <p className="text-muted-foreground text-base sm:text-lg mb-8 sm:mb-10 lg:mb-12 leading-relaxed">
               Estamos aquí para ayudarte. Contáctanos por cualquiera de nuestros canales.
             </p>
 
@@ -26,7 +26,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-base sm:text-lg mb-1">Teléfono</h4>
-                  <p className="text-background/70 text-sm sm:text-base">Llámanos para atención inmediata</p>
+                  <p className="text-muted-foreground text-sm sm:text-base">Llámanos para atención inmediata</p>
                   <a href="tel:+584241234567" className="text-accent text-sm sm:text-base hover:underline">
                     +58 424 123 4567
                   </a>
@@ -39,7 +39,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-base sm:text-lg mb-1">Email</h4>
-                  <p className="text-background/70 text-sm sm:text-base">Escríbenos</p>
+                  <p className="text-muted-foreground text-sm sm:text-base">Escríbenos</p>
                   <a href="mailto:info@pintualiado.com" className="text-accent text-sm sm:text-base hover:underline">
                     info@pintualiado.com
                   </a>
@@ -52,8 +52,8 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-base sm:text-lg mb-1">Ubicación</h4>
-                  <p className="text-background/70 text-sm sm:text-base">Caracas, Venezuela</p>
-                  <a 
+                  <p className="text-muted-foreground text-sm sm:text-base">Caracas, Venezuela</p>
+                  <a
                     href="https://maps.app.goo.gl/pLGyJ5RvEkBKvvzb8"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -70,20 +70,21 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-base sm:text-lg mb-1">Horario</h4>
-                  <p className="text-background/70 text-sm sm:text-base">Lun - Vie: 8:00 AM - 6:00 PM</p>
-                  <p className="text-background/70 text-sm sm:text-base">Sáb: 8:00 AM - 1:00 PM</p>
+                  <p className="text-muted-foreground text-sm sm:text-base">Lun - Vie: 8:00 AM - 6:00 PM</p>
+                  <p className="text-muted-foreground text-sm sm:text-base">Sáb: 8:00 AM - 1:00 PM</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 border-t border-background/10">
-              <p className="text-background/70 mb-3 sm:mb-4 text-sm sm:text-base">Síguenos en redes sociales</p>
+            <div className="mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 border-t border-border">
+              <p className="text-muted-foreground mb-3 sm:mb-4 text-sm sm:text-base">Síguenos en redes sociales</p>
               <div className="flex gap-3 sm:gap-4">
                 <a
                   href="https://www.facebook.com/profile.php?id=100086273631425"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 sm:w-12 sm:h-12 bg-background/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300"
+                  aria-label="Síguenos en Facebook"
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300"
                 >
                   <Facebook size={20} />
                 </a>
@@ -91,7 +92,8 @@ export function ContactSection() {
                   href="https://www.instagram.com/pintualiado/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 sm:w-12 sm:h-12 bg-background/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300"
+                  aria-label="Síguenos en Instagram"
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300"
                 >
                   <Instagram size={20} />
                 </a>
@@ -99,7 +101,7 @@ export function ContactSection() {
             </div>
           </div>
 
-          <div className="bg-card p-5 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl shadow-2xl">
+          <div className="bg-secondary/50 p-5 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl shadow-sm border border-border">
             <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
               Envíanos un mensaje
             </h3>

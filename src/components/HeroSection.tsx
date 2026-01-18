@@ -8,10 +8,10 @@ export function HeroSection() {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden bg-background pt-[72px] lg:pt-[84px]">
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-foreground/5 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-[40%] h-[60%] bg-gradient-to-tr from-accent/10 to-transparent rounded-tr-[100px] sm:rounded-tr-[200px]" />
-        <div className="absolute top-20 left-10 sm:left-20 w-32 sm:w-64 h-32 sm:h-64 bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 sm:right-20 w-48 sm:w-96 h-48 sm:h-96 bg-muted/30 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-foreground/5 to-transparent dark:from-white/5" />
+        <div className="absolute bottom-0 left-0 w-[40%] h-[60%] bg-gradient-to-tr from-accent/10 to-transparent rounded-tr-[100px] sm:rounded-tr-[200px] dark:from-accent/5" />
+        <div className="absolute top-20 left-10 sm:left-20 w-32 sm:w-64 h-32 sm:h-64 bg-accent/5 rounded-full blur-3xl dark:opacity-30" />
+        <div className="absolute bottom-20 right-10 sm:right-20 w-48 sm:w-96 h-48 sm:h-96 bg-muted/30 rounded-full blur-3xl dark:bg-muted/10" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 py-12 sm:py-16 lg:py-0">
