@@ -1,9 +1,18 @@
 "use client";
 
-import React from "react";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { useTheme } from "@/context/ThemeContext";
 import { Instagram, ExternalLink, Heart, MessageCircle } from "lucide-react";
 
 export function InstagramFeed() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-secondary">
       <div className="container mx-auto px-4">
@@ -24,8 +33,16 @@ export function InstagramFeed() {
           <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12">
             <div className="flex-shrink-0 text-center lg:text-left">
               <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 p-0.5 sm:p-1 mx-auto lg:mx-0 mb-3 sm:mb-4">
-                <div className="w-full h-full rounded-full bg-card flex items-center justify-center">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground">P</span>
+                <div className="relative w-full h-full rounded-full bg-card overflow-hidden">
+                  <Image
+                    src="/logo.png"
+                    alt="Logo"
+                    fill
+                    className={`object-contain p-2 transition-all duration-300 ${mounted && theme === "dark"
+                        ? "brightness-100 contrast-100"
+                        : "brightness-[0.1] contrast-150"
+                      }`}
+                  />
                 </div>
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-foreground">@pintualiado</h3>

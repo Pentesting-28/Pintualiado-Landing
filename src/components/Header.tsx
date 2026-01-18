@@ -43,7 +43,7 @@ export function Header() {
                 src="/logo.png"
                 alt="Pintualiado Logo"
                 fill
-                className={`object-contain transition-all duration-300 ${mounted && theme === "dark" ? "brightness-125" : "brightness-[0.1] contrast-150"
+                className={`object-contain transition-all duration-300 ${mounted && theme === "dark" ? "" : "brightness-[0.1] contrast-150"
                   }`}
                 priority
               />
