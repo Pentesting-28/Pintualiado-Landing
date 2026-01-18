@@ -1,11 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useTheme } from "@/context/ThemeContext";
 import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { theme, mounted } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <footer className="bg-foreground text-background">
@@ -15,16 +22,19 @@ export function Footer() {
             <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
               <div className="relative w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]">
                 <Image
-                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/289096037_568244014686825_3708685445972980283_n-1768767730526.jpg?width=8000&height=8000&resize=contain"
+                  src="/logo.png"
                   alt="Pintualiado Logo"
                   fill
-                  className="object-contain brightness-0 invert"
+                  className={`object-contain transition-all duration-300 ${isMounted && theme === "dark"
+                      ? "brightness-[0.1] contrast-150"
+                      : "brightness-100 invert-0"
+                    }`}
                 />
               </div>
               <span className="text-xl sm:text-2xl font-bold tracking-tight">Pintualiado</span>
             </div>
             <p className="text-background/60 max-w-md mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-              Tu tienda de pinturas de confianza en Caracas. Ofrecemos la mejor 
+              Tu tienda de pinturas de confianza en Caracas. Ofrecemos la mejor
               variedad de pinturas y acabados para transformar tus espacios.
             </p>
             <div className="flex gap-3 sm:gap-4">
