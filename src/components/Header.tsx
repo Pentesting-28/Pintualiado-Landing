@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Instagram, Menu, X, Phone, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,7 +14,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -29,16 +30,19 @@ export function Header() {
   ];
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ease-in-out ${isScrolled
-        ? "bg-background/95 backdrop-blur-md shadow-lg py-1.5"
-        : "bg-background/80 backdrop-blur-sm py-2 sm:py-3"
+        ? "bg-background/80 backdrop-blur-xl border-b border-white/5 py-2 shadow-sm"
+        : "bg-transparent py-4 sm:py-6"
         }`}
     >
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex items-center justify-between h-[56px] lg:h-[50px]">
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 transition-transform duration-300 hover:scale-105">
-            <div className="relative w-[36px] h-[36px] lg:w-[44px] lg:h-[44px]">
+        <div className="flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-[40px] h-[40px] lg:w-[48px] lg:h-[48px] transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="/logo.png"
                 alt="Pintualiado Logo"
@@ -48,57 +52,42 @@ export function Header() {
                 priority
               />
             </div>
-            <span className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground tracking-tight">
+            <span className="text-xl lg:text-2xl font-bold text-foreground tracking-tight group-hover:text-accent transition-colors duration-300">
               Pintualiado
             </span>
           </Link>
 
           <nav className="hidden lg:flex items-center">
-            <ul className="flex items-center space-x-6 xl:space-x-8">
+            <ul className="flex items-center space-x-8">
               {menuItems.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm xl:text-[15px] font-medium text-foreground/80 hover:text-accent transition-colors duration-300"
+                    className="text-sm font-semibold text-foreground/90 hover:text-accent transition-colors duration-300 relative group"
                   >
                     {item.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
-            <button
-              onClick={toggleTheme}
-              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-secondary text-foreground hover:bg-accent hover:text-white transition-all duration-300"
-              aria-label={theme === "light" ? "Activar modo oscuro" : "Activar modo claro"}
-            >
-              {mounted && (theme === "light" ? <Moon size={18} /> : <Sun size={18} />)}
-            </button>
-
-            <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
-              <a
-                href="https://www.facebook.com/profile.php?id=100086273631425"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-foreground text-background hover:bg-accent transition-colors duration-300"
+          <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-2">
+              <button
+                onClick={toggleTheme}
+                className="w-10 h-10 flex items-center justify-center rounded-full text-foreground hover:bg-white/5 hover:text-accent transition-colors duration-300"
+                aria-label="Toggle Theme"
               >
-                <Facebook size={18} />
-              </a>
-              <a
-                href="https://www.instagram.com/pintualiado/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-foreground text-background hover:bg-accent transition-colors duration-300"
-              >
-                <Instagram size={18} />
-              </a>
+                {mounted && (theme === "light" ? <Moon size={20} /> : <Sun size={20} />)}
+              </button>
+              <div className="w-[1px] h-6 bg-white/10" />
             </div>
 
             <a
               href="tel:+584241234567"
-              className="hidden sm:flex items-center gap-2 bg-accent text-white px-3 lg:px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-all duration-300"
+              className="hidden sm:flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-full text-sm font-bold hover:bg-accent hover:text-white transition-all duration-300 shadow-lg hover:shadow-accent/20"
             >
               <Phone size={16} />
               <span className="hidden lg:inline">Llámanos</span>
@@ -106,79 +95,48 @@ export function Header() {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-foreground"
+              className="lg:hidden p-2 text-foreground hover:text-accent transition-colors"
               aria-label="Toggle Menu"
             >
-              {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
       </div>
 
-      <div
-        className={`fixed inset-0 bg-background/95 backdrop-blur-md z-[999] lg:hidden transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        style={{ top: "0", height: "100vh" }}
-      >
-        <div className="flex justify-end p-4 sm:p-6">
-          <button
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="p-2 text-foreground"
-            aria-label="Close Menu"
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "tween", duration: 0.3 }}
+            className="fixed inset-0 bg-background/95 backdrop-blur-xl z-[999] lg:hidden flex flex-col pt-24 px-6"
           >
-            <X size={32} />
-          </button>
-        </div>
-        <nav className="flex flex-col items-center justify-center h-full -mt-16 sm:pt-12 space-y-6 sm:space-y-8 px-4">
-          {menuItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-lg sm:text-xl font-semibold text-foreground hover:text-accent transition-colors"
-            >
-              {item.name}
-            </Link>
-          ))}
-
-          <div className="flex items-center gap-4 pt-6 sm:pt-8">
-            <button
-              onClick={toggleTheme}
-              className="w-12 h-12 flex items-center justify-center rounded-full bg-secondary text-foreground hover:bg-accent hover:text-white transition-all duration-300"
-              aria-label={theme === "light" ? "Activar modo oscuro" : "Activar modo claro"}
-            >
-              {mounted && (theme === "light" ? <Moon size={22} /> : <Sun size={22} />)}
-            </button>
-          </div>
-
-          <div className="flex space-x-6 pt-4">
-            <a
-              href="https://www.facebook.com/profile.php?id=100086273631425"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground text-background hover:bg-accent transition-colors"
-            >
-              <Facebook size={22} />
-            </a>
-            <a
-              href="https://www.instagram.com/pintualiado/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center rounded-full bg-foreground text-background hover:bg-accent transition-colors"
-            >
-              <Instagram size={22} />
-            </a>
-          </div>
-
-          <a
-            href="tel:+584241234567"
-            className="mt-6 flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-full font-medium"
-          >
-            <Phone size={18} />
-            <span>Llámanos</span>
-          </a>
-        </nav>
-      </div>
-    </header>
+            <nav className="flex flex-col space-y-6">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-2xl font-bold text-foreground hover:text-accent transition-colors border-b border-white/5 pb-4"
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <div className="flex gap-4 pt-4">
+                <button
+                  onClick={() => { toggleTheme(); setIsMobileMenuOpen(false); }}
+                  className="flex items-center gap-3 text-foreground font-medium"
+                >
+                  {mounted && (theme === "light" ? <Moon size={24} /> : <Sun size={24} />)}
+                  <span>{theme === "light" ? "Modo Oscuro" : "Modo Claro"}</span>
+                </button>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }

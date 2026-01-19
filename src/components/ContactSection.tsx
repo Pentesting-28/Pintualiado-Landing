@@ -2,13 +2,19 @@
 
 import React from "react";
 import { Phone, Mail, MapPin, Clock, Send, Facebook, Instagram } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function ContactSection() {
   return (
-    <section id="contacto" className="py-16 sm:py-20 lg:py-24 bg-background">
+    <section id="contacto" className="py-16 sm:py-20 lg:py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-          <div className="text-foreground">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-foreground"
+          >
             <span className="inline-block text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">
               Contacto
             </span>
@@ -20,88 +26,78 @@ export function ContactSection() {
             </p>
 
             <div className="space-y-4 sm:space-y-6">
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Phone className="text-accent w-5 h-5 sm:w-[22px] sm:h-[22px]" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-base sm:text-lg mb-1">Teléfono</h4>
-                  <p className="text-muted-foreground text-sm sm:text-base">Llámanos para atención inmediata</p>
-                  <a href="tel:+584241234567" className="text-accent text-sm sm:text-base hover:underline">
-                    +58 424 123 4567
-                  </a>
-                </div>
-              </div>
+              {[
+                { icon: Phone, title: "Teléfono", desc: "Llámanos para atención inmediata", link: "tel:+584241234567", linkText: "+58 424 123 4567" },
+                { icon: Mail, title: "Email", desc: "Escríbenos", link: "mailto:info@pintualiado.com", linkText: "info@pintualiado.com" },
+                { icon: MapPin, title: "Ubicación", desc: "Caracas, Venezuela", link: "https://maps.app.goo.gl/pLGyJ5RvEkBKvvzb8", linkText: "Ver en mapa" },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-start gap-3 sm:gap-4 group"
+                >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                    <item.icon className="text-accent group-hover:text-white w-5 h-5 sm:w-[22px] sm:h-[22px] transition-colors duration-300" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-base sm:text-lg mb-1">{item.title}</h4>
+                    <p className="text-muted-foreground text-sm sm:text-base">{item.desc}</p>
+                    <a href={item.link} className="text-accent text-sm sm:text-base hover:underline">
+                      {item.linkText}
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
 
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Mail className="text-accent w-5 h-5 sm:w-[22px] sm:h-[22px]" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-base sm:text-lg mb-1">Email</h4>
-                  <p className="text-muted-foreground text-sm sm:text-base">Escríbenos</p>
-                  <a href="mailto:info@pintualiado.com" className="text-accent text-sm sm:text-base hover:underline">
-                    info@pintualiado.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <MapPin className="text-accent w-5 h-5 sm:w-[22px] sm:h-[22px]" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-base sm:text-lg mb-1">Ubicación</h4>
-                  <p className="text-muted-foreground text-sm sm:text-base">Caracas, Venezuela</p>
-                  <a
-                    href="https://maps.app.goo.gl/pLGyJ5RvEkBKvvzb8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent text-sm sm:text-base hover:underline"
-                  >
-                    Ver en mapa
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Clock className="text-accent w-5 h-5 sm:w-[22px] sm:h-[22px]" />
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="flex items-start gap-3 sm:gap-4 group"
+              >
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                  <Clock className="text-accent group-hover:text-white w-5 h-5 sm:w-[22px] sm:h-[22px] transition-colors duration-300" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-base sm:text-lg mb-1">Horario</h4>
                   <p className="text-muted-foreground text-sm sm:text-base">Lun - Vie: 8:00 AM - 6:00 PM</p>
                   <p className="text-muted-foreground text-sm sm:text-base">Sáb: 8:00 AM - 1:00 PM</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             <div className="mt-8 sm:mt-10 lg:mt-12 pt-6 sm:pt-8 border-t border-border">
               <p className="text-muted-foreground mb-3 sm:mb-4 text-sm sm:text-base">Síguenos en redes sociales</p>
               <div className="flex gap-3 sm:gap-4">
-                <a
-                  href="https://www.facebook.com/profile.php?id=100086273631425"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Síguenos en Facebook"
-                  className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300"
-                >
-                  <Facebook size={20} />
-                </a>
-                <a
-                  href="https://www.instagram.com/pintualiado/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Síguenos en Instagram"
-                  className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300"
-                >
-                  <Instagram size={20} />
-                </a>
+                {[
+                  { icon: Facebook, link: "https://www.facebook.com/profile.php?id=100086273631425", label: "Facebook" },
+                  { icon: Instagram, link: "https://www.instagram.com/pintualiado/", label: "Instagram" }
+                ].map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Síguenos en ${social.label}`}
+                    className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300 transform hover:scale-110"
+                  >
+                    <social.icon size={20} />
+                  </a>
+                ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-secondary/50 p-5 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl shadow-sm border border-border">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-card p-5 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl shadow-sm border border-white/5"
+          >
             <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
               Envíanos un mensaje
             </h3>
@@ -114,7 +110,7 @@ export function ContactSection() {
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-border bg-background text-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-input bg-background/50 text-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm sm:text-base"
                   placeholder="Tu nombre"
                 />
               </div>
@@ -127,7 +123,7 @@ export function ContactSection() {
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-border bg-background text-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-input bg-background/50 text-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm sm:text-base"
                   placeholder="tu@email.com"
                 />
               </div>
@@ -140,7 +136,7 @@ export function ContactSection() {
                   type="tel"
                   id="phone"
                   name="phone"
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-border bg-background text-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-input bg-background/50 text-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm sm:text-base"
                   placeholder="+58 424 123 4567"
                 />
               </div>
@@ -153,20 +149,22 @@ export function ContactSection() {
                   id="message"
                   name="message"
                   rows={3}
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-border bg-background text-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none text-sm sm:text-base sm:rows-4"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-input bg-background/50 text-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none text-sm sm:text-base sm:rows-4"
                   placeholder="¿En qué podemos ayudarte?"
                 />
               </div>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-foreground text-background py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base hover:bg-accent transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full bg-foreground text-background py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base hover:bg-accent hover:text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
               >
                 Enviar mensaje
                 <Send size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

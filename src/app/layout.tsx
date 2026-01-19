@@ -17,6 +17,7 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning>
       <body className="antialiased">
         <ThemeProvider>
+          <div className="texture-overlay" />
           {children}
         </ThemeProvider>
         <VisualEditsMessenger />

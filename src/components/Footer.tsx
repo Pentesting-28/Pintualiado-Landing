@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTheme } from "@/context/ThemeContext";
-import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,12 +16,12 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="bg-background text-foreground border-t border-border">
-      <div className="container mx-auto px-4 py-10 sm:py-12 lg:py-16">
+    <footer className="bg-background text-foreground border-t border-white/5 relative z-10">
+      <div className="container mx-auto px-4 py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
-          <div className="sm:col-span-2 lg:col-span-2">
-            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-              <div className="relative w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]">
+          <div className="sm:col-span-2 lg:col-span-2 space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="relative w-12 h-12">
                 <Image
                   src="/logo.png"
                   alt="Pintualiado Logo"
@@ -31,85 +32,69 @@ export function Footer() {
                     }`}
                 />
               </div>
-              <span className="text-xl sm:text-2xl font-bold tracking-tight">Pintualiado</span>
+              <span className="text-2xl font-bold tracking-tight">Pintualiado</span>
             </div>
-            <p className="text-muted-foreground max-w-md mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-              Venta de pinturas Automotriz, Arquitectónica e Industrial. Así como insumos afines. Visítanos en Los Rosales, Caracas.
+            <p className="text-muted-foreground max-w-md leading-relaxed">
+              Tu aliado experto en recubrimientos automotrices, arquitectónicos e industriales. Calidad superior y asesoría técnica especializada.
             </p>
-            <div className="flex gap-3 sm:gap-4">
-              <a
-                href="https://www.facebook.com/profile.php?id=100086273631425"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook de Pintualiado"
-                className="w-9 h-9 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300"
-              >
-                <Facebook size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </a>
-              <a
-                href="https://www.instagram.com/pintualiado/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram de Pintualiado"
-                className="w-9 h-9 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300"
-              >
-                <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </a>
+            <div className="flex gap-4">
+              {[
+                { icon: Facebook, href: "https://www.facebook.com/profile.php?id=100086273631425", label: "Facebook" },
+                { icon: Instagram, href: "https://www.instagram.com/pintualiado/", label: "Instagram" }
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300 hover:scale-110"
+                >
+                  <social.icon size={20} />
+                </a>
+              ))}
             </div>
           </div>
 
           <div>
-            <h4 className="font-bold text-base sm:text-lg mb-4 sm:mb-6">Enlaces Rápidos</h4>
-            <ul className="space-y-2 sm:space-y-3">
-              <li>
-                <a href="#inicio" className="text-muted-foreground hover:text-accent transition-colors text-sm sm:text-base">
-                  Inicio
-                </a>
-              </li>
-              <li>
-                <a href="#productos" className="text-muted-foreground hover:text-accent transition-colors text-sm sm:text-base">
-                  Productos
-                </a>
-              </li>
-              <li>
-                <a href="#servicios" className="text-muted-foreground hover:text-accent transition-colors text-sm sm:text-base">
-                  Servicios
-                </a>
-              </li>
-              <li>
-                <a href="#nosotros" className="text-muted-foreground hover:text-accent transition-colors text-sm sm:text-base">
-                  Nosotros
-                </a>
-              </li>
-              <li>
-                <a href="#ubicacion" className="text-muted-foreground hover:text-accent transition-colors text-sm sm:text-base">
-                  Ubicación
-                </a>
-              </li>
-              <li>
-                <a href="#contacto" className="text-muted-foreground hover:text-accent transition-colors text-sm sm:text-base">
-                  Contacto
-                </a>
-              </li>
+            <h4 className="font-bold text-lg mb-6 text-foreground">Navegación</h4>
+            <ul className="space-y-3">
+              {[
+                { name: "Inicio", href: "#inicio" },
+                { name: "Productos", href: "#productos" },
+                { name: "Servicios", href: "#servicios" },
+                { name: "Nosotros", href: "#nosotros" },
+                { name: "Contacto", href: "#contacto" },
+              ].map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-accent transition-colors flex items-center gap-2 group"
+                  >
+                    <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-base sm:text-lg mb-4 sm:mb-6">Contacto</h4>
-            <ul className="space-y-3 sm:space-y-4">
-              <li className="flex items-start gap-2 sm:gap-3">
-                <MapPin className="text-accent flex-shrink-0 mt-0.5 w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                <span className="text-muted-foreground text-sm sm:text-base">Av. prolongacion Zuloaga, Los Rosales, Caracas</span>
+            <h4 className="font-bold text-lg mb-6 text-foreground">Información</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin className="text-accent flex-shrink-0 w-5 h-5 mt-0.5" />
+                <span className="text-muted-foreground">Av. prolongacion Zuloaga, Los Rosales, Caracas</span>
               </li>
-              <li className="flex items-center gap-2 sm:gap-3">
-                <Phone className="text-accent flex-shrink-0 w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                <a href="tel:+584241234567" className="text-muted-foreground hover:text-accent transition-colors text-sm sm:text-base">
+              <li className="flex items-center gap-3">
+                <Phone className="text-accent flex-shrink-0 w-5 h-5" />
+                <a href="tel:+584241234567" className="text-muted-foreground hover:text-accent transition-colors">
                   +58 424 123 4567
                 </a>
               </li>
-              <li className="flex items-center gap-2 sm:gap-3">
-                <Mail className="text-accent flex-shrink-0 w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                <a href="mailto:info@pintualiado.com" className="text-muted-foreground hover:text-accent transition-colors text-sm sm:text-base break-all">
+              <li className="flex items-center gap-3">
+                <Mail className="text-accent flex-shrink-0 w-5 h-5" />
+                <a href="mailto:info@pintualiado.com" className="text-muted-foreground hover:text-accent transition-colors break-all">
                   info@pintualiado.com
                 </a>
               </li>
@@ -118,21 +103,14 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-border">
-        <div className="container mx-auto px-4 py-4 sm:py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-            <p className="text-muted-foreground text-xs sm:text-sm text-center sm:text-left">
-              © {currentYear} Pintualiado. Todos los derechos reservados.
+      <div className="border-t border-white/5 bg-background/50 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-muted-foreground text-sm text-center sm:text-left">
+              © {currentYear} Pintualiado. C.A. Todos los derechos reservados.
             </p>
-            <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm">
-              <a
-                href="https://www.instagram.com/pintualiado/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-accent transition-colors"
-              >
-                @pintualiado
-              </a>
+            <div className="flex items-center gap-6 text-sm">
+              <span className="text-muted-foreground opacity-50">Designed with precision</span>
             </div>
           </div>
         </div>
