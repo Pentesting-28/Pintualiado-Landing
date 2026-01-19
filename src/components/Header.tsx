@@ -3,16 +3,16 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Instagram, Menu, X, Phone, Sun, Moon } from "lucide-react";
-import { useTheme } from "@/context/ThemeContext";
+import { Facebook, Instagram, Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme, toggleTheme, mounted } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -47,8 +47,7 @@ export function Header() {
                 src="/logo.png"
                 alt="Pintualiado Logo"
                 fill
-                className={`object-contain transition-all duration-300 ${mounted && theme === "dark" ? "" : "brightness-[0.1] contrast-150"
-                  }`}
+                className="object-contain"
                 priority
               />
             </div>
@@ -75,13 +74,6 @@ export function Header() {
 
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-2">
-              <button
-                onClick={toggleTheme}
-                className="w-10 h-10 flex items-center justify-center rounded-full text-foreground hover:bg-white/5 hover:text-accent transition-colors duration-300"
-                aria-label="Toggle Theme"
-              >
-                {mounted && (theme === "light" ? <Moon size={20} /> : <Sun size={20} />)}
-              </button>
               <div className="w-[1px] h-6 bg-white/10" />
             </div>
 
@@ -124,15 +116,6 @@ export function Header() {
                   {item.name}
                 </Link>
               ))}
-              <div className="flex gap-4 pt-4">
-                <button
-                  onClick={() => { toggleTheme(); setIsMobileMenuOpen(false); }}
-                  className="flex items-center gap-3 text-foreground font-medium"
-                >
-                  {mounted && (theme === "light" ? <Moon size={24} /> : <Sun size={24} />)}
-                  <span>{theme === "light" ? "Modo Oscuro" : "Modo Claro"}</span>
-                </button>
-              </div>
             </nav>
           </motion.div>
         )}

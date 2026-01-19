@@ -26,10 +26,7 @@ export function Footer() {
                   src="/logo.png"
                   alt="Pintualiado Logo"
                   fill
-                  className={`object-contain transition-all duration-300 ${isMounted && theme === "dark"
-                    ? ""
-                    : "brightness-[0.1] contrast-150"
-                    }`}
+                  className="object-contain transition-all duration-300"
                 />
               </div>
               <span className="text-2xl font-bold tracking-tight">Pintualiado</span>
