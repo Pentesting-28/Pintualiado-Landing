@@ -8,76 +8,69 @@ const services = [
     icon: Paintbrush,
     title: "Venta de Pinturas",
     description: "Distribución de pinturas Automotriz, Arquitectónica e Industrial de las mejores marcas.",
-    color: "bg-accent/10",
-    iconColor: "text-accent",
   },
   {
     icon: Truck,
     title: "Insumos Afines",
-    category: "Industrial",
     description: "Todo en lijas, solventes, selladores y herramientas para el pintor profesional.",
-    color: "bg-blue-500/10",
-    iconColor: "text-blue-500",
   },
   {
     icon: Building2,
     title: "Soluciones Industriales",
     description: "Recubrimientos de alta resistencia para ambientes exigentes y protección de activos.",
-    color: "bg-green-500/10",
-    iconColor: "text-green-500",
   },
   {
     icon: Palette,
     title: "Igualación de Colores",
     description: "Servicio especializado de igualación computarizada para acabados perfectos.",
-    color: "bg-purple-500/10",
-    iconColor: "text-purple-500",
   },
   {
     icon: Shield,
     title: "Asesoría Técnica",
     description: "Contamos con expertos para asesorarte en la aplicación y elección de productos.",
-    color: "bg-orange-500/10",
-    iconColor: "text-orange-500",
   },
   {
     icon: Home,
     title: "Atención Especializada",
     description: "Visítanos en nuestra tienda física en Los Rosales para una atención personalizada.",
-    color: "bg-teal-500/10",
-    iconColor: "text-teal-500",
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section id="servicios" className="py-16 sm:py-20 lg:py-24 bg-background">
+    <section id="servicios" className="py-20 sm:py-24 lg:py-32 bg-background border-t border-border/50">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 lg:mb-16">
-          <span className="inline-block text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">
-            Nuestros Servicios
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
-            Todo lo que necesitas para tus proyectos
-          </h2>
-          <p className="text-muted-foreground text-base sm:text-lg px-4 sm:px-0">
-            Brindamos soluciones integrales en pinturas y acabados para cualquier tipo de proyecto.
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 lg:mb-24">
+          <div className="max-w-2xl">
+            <span className="inline-block text-accent font-bold text-xs uppercase tracking-[0.3em] mb-4">
+              Excelencia en acabados
+            </span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-foreground tracking-tighter leading-[0.9]">
+              Todo lo que necesitas para tus proyectos
+            </h2>
+          </div>
+          <p className="text-muted-foreground text-lg max-w-sm lg:text-right leading-relaxed">
+            Brindamos soluciones integrales en pinturas y acabados bajo los más altos estándares de calidad.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-border/50">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group p-5 sm:p-6 lg:p-8 bg-card rounded-xl sm:rounded-2xl border border-border hover:border-accent/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="group p-10 sm:p-12 border-r border-b border-border/50 hover:bg-muted/30 transition-colors duration-500"
             >
-              <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 ${service.color} rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-5 lg:mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <service.icon className={service.iconColor} size={24} />
+              <div className="mb-8">
+                <service.icon
+                  strokeWidth={1.2}
+                  className="text-foreground/40 group-hover:text-accent transition-colors duration-500"
+                  size={48}
+                />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">
+              <h3 className="text-2xl font-bold text-foreground mb-4 tracking-tight">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed font-medium">
                 {service.description}
               </p>
             </div>
