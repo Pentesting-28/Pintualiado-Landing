@@ -4,6 +4,8 @@ export interface InstagramPost {
     postUrl: string;
     likes?: number;
     caption?: string;
+    isVideo?: boolean;
+    videoUrl?: string;
 }
 
 interface InstagramAPIResponse {
@@ -15,6 +17,8 @@ interface InstagramAPIResponse {
                         id: string;
                         shortcode: string;
                         display_url: string;
+                        is_video: boolean;
+                        video_url?: string;
                         edge_liked_by: {
                             count: number;
                         };
@@ -51,7 +55,7 @@ export const InstagramService = {
                 console.error(`Instagram API fetch failed: ${response.status} ${response.statusText}`);
                 return [];
             }
-            
+
             const data: InstagramAPIResponse = await response.json();
 
             // Extraer posts de la estructura de respuesta
@@ -71,6 +75,8 @@ export const InstagramService = {
                     postUrl: `https://www.instagram.com/p/${node.shortcode}/`,
                     likes: node.edge_liked_by?.count,
                     caption: node.edge_media_to_caption?.edges[0]?.node?.text || '',
+                    isVideo: node.is_video || false,
+                    videoUrl: node.video_url || undefined,
                 };
             });
 

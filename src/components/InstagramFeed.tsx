@@ -9,8 +9,9 @@ export function InstagramFeed() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  const [posts, setPosts] = useState<{ id: string; imageUrl: string; postUrl: string }[]>([]);
+  const [posts, setPosts] = useState<{ id: string; imageUrl: string; postUrl: string; isVideo?: boolean; videoUrl?: string }[]>([]);
   const [loading, setLoading] = useState(true);
+  const [playingVideos, setPlayingVideos] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     setMounted(true);
@@ -108,16 +109,72 @@ export function InstagramFeed() {
                       href={post.postUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative aspect-square bg-muted rounded-xl overflow-hidden shadow-sm"
+                      className="group relative aspect-square bg-muted rounded-xl overflow-hidden shadow-sm cursor-pointer"
+                      onMouseEnter={(e) => {
+                        if (post.isVideo) {
+                          const video = e.currentTarget.querySelector('video') as HTMLVideoElement;
+                          if (video) {
+                            video.play().catch(() => {
+                              // Silenciar errores de autoplay
+                            });
+                            setPlayingVideos(prev => new Set(prev).add(post.id));
+                          }
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (post.isVideo) {
+                          const video = e.currentTarget.querySelector('video') as HTMLVideoElement;
+                          if (video) {
+                            video.pause();
+                            video.currentTime = 0;
+                            setPlayingVideos(prev => {
+                              const newSet = new Set(prev);
+                              newSet.delete(post.id);
+                              return newSet;
+                            });
+                          }
+                        }
+                      }}
                     >
-                      <Image
-                        src={post.imageUrl}
-                        alt="Instagram Post"
-                        fill
-                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 md:gap-6">
+                      {post.isVideo && post.videoUrl ? (
+                        <>
+                          {/* Video element (oculto hasta hover) */}
+                          <video
+                            src={post.videoUrl}
+                            loop
+                            muted
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                          {/* Imagen placeholder (se oculta al reproducir) */}
+                          {!playingVideos.has(post.id) && (
+                            <Image
+                              src={post.imageUrl}
+                              alt="Instagram Post"
+                              fill
+                              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                              className="object-cover transition-all duration-300 z-10"
+                            />
+                          )}
+                          {/* Indicador de video */}
+                          {!playingVideos.has(post.id) && (
+                            <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full z-20">
+                              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                              </svg>
+                            </div>
+                          )}
+                        </>
+                      ) : (
+                        <Image
+                          src={post.imageUrl}
+                          alt="Instagram Post"
+                          fill
+                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 md:gap-6 z-30">
                         <div className="flex flex-col items-center gap-1 text-white">
                           <Heart size={18} fill="white" />
                         </div>
