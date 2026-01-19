@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
-import { BrandsCarousel } from "@/components/BrandsCarousel";
+// import { BrandsCarousel } from "@/components/BrandsCarousel";
 import { ProductsSection } from "@/components/ProductsSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { AboutSection } from "@/components/AboutSection";
@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        <BrandsCarousel />
+        {/* <BrandsCarousel /> */}
         <ProductsSection />
         <ServicesSection />
         <AboutSection />
