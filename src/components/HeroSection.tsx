@@ -72,8 +72,8 @@ export function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-foreground/10 rounded-[40px] lg:rounded-[60px] transform rotate-6" />
               <div className="absolute inset-4 bg-card rounded-[30px] lg:rounded-[50px] shadow-2xl overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800"
-                  alt="Pinturas de colores"
+                  src="https://images.unsplash.com/photo-1595853035070-59a39fe84de3?w=800"
+                  alt="Tienda de pinturas Pintualiado"
                   fill
                   className="object-cover"
                   priority

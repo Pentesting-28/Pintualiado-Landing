@@ -66,12 +66,11 @@ export function LocationSection() {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.8461582754376!2d-66.90530420000001!3d10.478930799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5911c73125ef%3A0x9be73e330e3e7833!2sPINTUALIADO!5e0!3m2!1ses!2sve!4v1705000000000!5m2!1ses!2sve"
             width="100%"
             height="300"
-            style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Ubicación de Pintualiado en Google Maps"
-            className="w-full sm:h-[350px] lg:h-[450px]"
+            className="w-full sm:h-[350px] lg:h-[450px] border-0"
           />
         </div>
       </div>

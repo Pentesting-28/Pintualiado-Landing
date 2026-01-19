@@ -41,6 +41,7 @@ export function Footer() {
                 href="https://www.facebook.com/profile.php?id=100086273631425"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Facebook de Pintualiado"
                 className="w-9 h-9 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300"
               >
                 <Facebook size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -49,6 +50,7 @@ export function Footer() {
                 href="https://www.instagram.com/pintualiado/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Instagram de Pintualiado"
                 className="w-9 h-9 sm:w-10 sm:h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300"
               >
                 <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
