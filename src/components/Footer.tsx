@@ -34,8 +34,7 @@ export function Footer() {
               <span className="text-xl sm:text-2xl font-bold tracking-tight">Pintualiado</span>
             </div>
             <p className="text-muted-foreground max-w-md mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-              Tu tienda de pinturas de confianza en Caracas. Ofrecemos la mejor
-              variedad de pinturas y acabados para transformar tus espacios.
+              Venta de pinturas Automotriz, Arquitectónica e Industrial. Así como insumos afines. Visítanos en Los Rosales, Caracas.
             </p>
             <div className="flex gap-3 sm:gap-4">
               <a
@@ -98,7 +97,7 @@ export function Footer() {
             <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start gap-2 sm:gap-3">
                 <MapPin className="text-accent flex-shrink-0 mt-0.5 w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                <span className="text-muted-foreground text-sm sm:text-base">Caracas, Venezuela</span>
+                <span className="text-muted-foreground text-sm sm:text-base">Av. prolongacion Zuloaga, Los Rosales, Caracas</span>
               </li>
               <li className="flex items-center gap-2 sm:gap-3">
                 <Phone className="text-accent flex-shrink-0 w-4 h-4 sm:w-[18px] sm:h-[18px]" />

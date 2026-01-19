@@ -23,16 +23,16 @@ export function HeroSection() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-foreground leading-[1.1] sm:leading-tight">
-              Dale vida a tus
+              Pintura para cada
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-accent to-foreground">
-                espacios
+                necesidad
               </span>
             </h1>
 
             <p className="text-base sm:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              En Pintualiado encontrarás la mejor variedad de pinturas, esmaltes
-              y acabados para transformar tu hogar, oficina o negocio. Calidad
-              garantizada y asesoría personalizada.
+              En Pintualiado nos especializamos en la venta de pinturas
+              <strong> Automotriz, Arquitectónica e Industrial</strong>.
+              Encuentra también todos los insumos afines para tus proyectos con la mejor asesoría de Caracas.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">

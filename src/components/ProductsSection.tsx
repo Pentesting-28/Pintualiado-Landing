@@ -7,45 +7,45 @@ import { ExternalLink } from "lucide-react";
 const products = [
   {
     id: 1,
-    name: "Pintura Interior Mate",
-    category: "Interiores",
-    image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=400&fit=crop",
-    description: "Acabado mate de alta calidad para paredes interiores",
+    name: "Pintura Automotriz",
+    category: "Automotriz",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=400&fit=crop",
+    description: "Sistemas bicapa, monocapa y complementos para el repintado profesional.",
   },
   {
     id: 2,
-    name: "Esmalte Brillante",
-    category: "Esmaltes",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&h=400&fit=crop",
-    description: "Esmalte de alto brillo para maderas y metales",
+    name: "Pintura Arquitectónica",
+    category: "Arquitectónica",
+    image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=400&fit=crop",
+    description: "Pinturas de caucho, acabados satinados y mates para interiores y exteriores.",
   },
   {
     id: 3,
-    name: "Pintura Exterior",
-    category: "Exteriores",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop",
-    description: "Resistente a la intemperie y rayos UV",
+    name: "Pintura Industrial",
+    category: "Industrial",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=400&fit=crop",
+    description: "Recubrimientos epóxicos, de alto tráfico y protección anticorrosiva.",
   },
   {
     id: 4,
-    name: "Impermeabilizante",
-    category: "Especiales",
-    image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&h=400&fit=crop",
-    description: "Protección total contra humedad y filtraciones",
+    name: "Insumos Afines",
+    category: "Insumos",
+    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&h=400&fit=crop",
+    description: "Thinner, lijas, masillas y todas las herramientas necesarias.",
   },
   {
     id: 5,
-    name: "Pintura Satinada",
-    category: "Interiores",
-    image: "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=400&h=400&fit=crop",
-    description: "Acabado satinado lavable y duradero",
+    name: "Esmaltes y Barnices",
+    category: "Acabados",
+    image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=400&h=400&fit=crop",
+    description: "Protección y belleza para superficies de madera y metal.",
   },
   {
     id: 6,
-    name: "Anticorrosivo",
+    name: "Impermeabilizantes",
     category: "Especiales",
-    image: "https://images.unsplash.com/photo-1580641156506-0a2f13b1cb8a?w=400&h=400&fit=crop",
-    description: "Protección profesional para superficies metálicas",
+    image: "https://images.unsplash.com/photo-1517646272486-a28f669f4bd4?w=400&h=400&fit=crop",
+    description: "Soluciones definitivas para filtraciones y humedad.",
   },
 ];
 
@@ -58,10 +58,10 @@ export function ProductsSection() {
             Nuestros Productos
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
-            Calidad que transforma espacios
+            Soluciones en Pinturas e Insumos
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg px-4 sm:px-0">
-            Descubre nuestra amplia variedad de pinturas y acabados para todo tipo de proyectos.
+            Ofrecemos una amplia gama de productos para los sectores automotriz, arquitectónico e industrial.
           </p>
         </div>
 

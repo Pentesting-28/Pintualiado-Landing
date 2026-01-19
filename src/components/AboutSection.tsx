@@ -5,12 +5,12 @@ import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 
 const features = [
-  "Productos de las mejores marcas",
-  "Asesoría personalizada gratuita",
-  "Precios competitivos",
-  "Amplia variedad de colores",
-  "Atención profesional",
-  "Entrega rápida",
+  "Línea Automotriz completa",
+  "Pinturas Arquitectónicas",
+  "Recubrimientos Industriales",
+  "Insumos y Herramientas",
+  "Igualación Computarizada",
+  "Asesoría Técnica Experta",
 ];
 
 export function AboutSection() {
@@ -21,15 +21,15 @@ export function AboutSection() {
           <div className="relative order-2 lg:order-1">
             <div className="relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800"
-                alt="Tienda de pinturas Pintualiado"
+                src="https://images.unsplash.com/photo-1595853035070-59a39fe84de3?w=800"
+                alt="Personal de Pintualiado brindando asesoría"
                 fill
                 className="object-cover"
               />
             </div>
             <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 lg:-bottom-8 lg:-right-8 bg-accent text-white p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-xl hidden sm:block">
-              <p className="text-3xl sm:text-4xl lg:text-5xl font-bold">5+</p>
-              <p className="text-xs sm:text-sm uppercase tracking-wider mt-1">Años de experiencia</p>
+              <p className="text-3xl sm:text-4xl lg:text-5xl font-bold">10+</p>
+              <p className="text-xs sm:text-sm uppercase tracking-wider mt-1">Años en el sector</p>
             </div>
           </div>
 
@@ -39,16 +39,13 @@ export function AboutSection() {
                 Sobre Nosotros
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
-                Tu aliado en pinturas y acabados
+                Especialistas en Color y Protección
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
-                En <strong className="text-foreground">Pintualiado</strong> nos dedicamos a ofrecer productos de
-                la más alta calidad para transformar tus espacios. Contamos con un
-                equipo de profesionales dispuestos a asesorarte.
+                En <strong className="text-foreground">Pintualiado</strong> somos más que una tienda de pinturas. Nos enfocamos en proveer soluciones integrales para el sector <strong className="text-foreground">Automotriz, Arquitectónico e Industrial</strong>.
               </p>
               <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-                Desde pinturas para interiores y exteriores hasta esmaltes,
-                impermeabilizantes y acabados especiales.
+                Nuestra misión es ofrecer productos de alta calidad y la asesoría técnica que necesitas para lograr resultados profesionales en cada aplicación, desde el repintado automotriz hasta grandes proyectos industriales.
               </p>
             </div>
 

@@ -15,7 +15,7 @@ export function LocationSection() {
             Visítanos en nuestra tienda
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg px-4 sm:px-0">
-            Estamos ubicados en Caracas, Venezuela. Te esperamos para asesorarte.
+            Encuéntranos en Los Rosales, Caracas. Te esperamos para asesorarte en tus proyectos automotrices, industriales y de hogar.
           </p>
         </div>
 
@@ -26,9 +26,9 @@ export function LocationSection() {
             </div>
             <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">Dirección</h3>
             <p className="text-muted-foreground text-sm sm:text-base">
-              Caracas, Venezuela
+              Av. prolongacion Zuloaga, calle intermedia
               <br />
-              Zona cercana a La California
+              Los Rosales, Caracas 1041
             </p>
           </div>
 
