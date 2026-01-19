@@ -9,8 +9,44 @@ export function InstagramFeed() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  const [posts, setPosts] = useState<{ id: string; imageUrl: string; postUrl: string }[]>([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     setMounted(true);
+
+    async function fetchPosts() {
+      // Fallback posts in case scraping fails (anti-bot protection)
+      const fallbackPosts = [
+        { id: 'f1', imageUrl: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800', postUrl: 'https://www.instagram.com/pintualiado/' },
+        { id: 'f2', imageUrl: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800', postUrl: 'https://www.instagram.com/pintualiado/' },
+        { id: 'f3', imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800', postUrl: 'https://www.instagram.com/pintualiado/' },
+        { id: 'f4', imageUrl: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800', postUrl: 'https://www.instagram.com/pintualiado/' },
+        { id: 'f5', imageUrl: 'https://images.unsplash.com/photo-1560184897-ae75f418493e?w=800', postUrl: 'https://www.instagram.com/pintualiado/' },
+        { id: 'f6', imageUrl: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800', postUrl: 'https://www.instagram.com/pintualiado/' },
+      ];
+
+      try {
+        const res = await fetch('/api/instagram');
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setPosts(data);
+          } else {
+            setPosts(fallbackPosts);
+          }
+        } else {
+          setPosts(fallbackPosts);
+        }
+      } catch (error) {
+        console.error('Failed to load Instagram posts', error);
+        setPosts(fallbackPosts);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPosts();
   }, []);
 
   return (
@@ -59,29 +95,39 @@ export function InstagramFeed() {
 
             <div className="flex-grow w-full">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4 lg:gap-6">
-                {[1, 2, 3, 4, 5, 6].map((item) => (
-                  <a
-                    key={item}
-                    href="https://www.instagram.com/pintualiado/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative aspect-square bg-muted rounded-xl overflow-hidden shadow-sm"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 via-pink-400/20 to-orange-400/20 flex items-center justify-center">
-                      <Instagram className="text-muted-foreground/30 w-8 h-8 md:w-10 md:h-10 transition-transform group-hover:scale-110" />
-                    </div>
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 md:gap-6">
-                      <div className="flex flex-col items-center gap-1 text-white">
-                        <Heart size={18} fill="white" />
-                        <span className="text-xs font-bold font-mono">--</span>
+                {loading ? (
+                  // Loading skeletons
+                  [1, 2, 3, 4, 5, 6].map((item) => (
+                    <div key={item} className="aspect-square bg-muted rounded-xl animate-pulse" />
+                  ))
+                ) : (
+                  // Real or Fallback posts (posts will be populated with fallback if API fails)
+                  posts.map((post) => (
+                    <a
+                      key={post.id}
+                      href={post.postUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative aspect-square bg-muted rounded-xl overflow-hidden shadow-sm"
+                    >
+                      <Image
+                        src={post.imageUrl}
+                        alt="Instagram Post"
+                        fill
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 md:gap-6">
+                        <div className="flex flex-col items-center gap-1 text-white">
+                          <Heart size={18} fill="white" />
+                        </div>
+                        <div className="flex flex-col items-center gap-1 text-white">
+                          <MessageCircle size={18} fill="white" />
+                        </div>
                       </div>
-                      <div className="flex flex-col items-center gap-1 text-white">
-                        <MessageCircle size={18} fill="white" />
-                        <span className="text-xs font-bold font-mono">--</span>
-                      </div>
-                    </div>
-                  </a>
-                ))}
+                    </a>
+                  ))
+                )}
               </div>
 
               <div className="mt-4 sm:mt-6 text-center">
@@ -89,6 +135,7 @@ export function InstagramFeed() {
                   href="https://www.instagram.com/pintualiado/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Ver todas las publicaciones en Instagram"
                   className="inline-flex items-center gap-2 text-foreground font-semibold text-sm sm:text-base hover:text-pink-500 transition-colors"
                 >
                   <span className="hidden sm:inline">Ver todas las publicaciones</span>
