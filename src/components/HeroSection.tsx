@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, Paintbrush, Palette, Sparkles } from "lucide-react";
+import { ArrowRight, Paintbrush, Palette } from "lucide-react";
 
 export function HeroSection() {
   return (
@@ -17,10 +17,7 @@ export function HeroSection() {
       <div className="container relative z-10 mx-auto px-4 py-12 sm:py-16 lg:py-0">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-2 sm:mb-4">
-              <Sparkles size={14} className="sm:w-4 sm:h-4" />
-              Tu tienda de pinturas de confianza
-            </div>
+
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-foreground leading-[1.1] sm:leading-tight">
               Pintura para cada
