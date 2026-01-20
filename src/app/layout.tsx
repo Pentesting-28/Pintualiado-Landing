@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { VisualEditsMessenger } from "orchids-visual-edits";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/context/ThemeContext";
 
+const inter = Inter({ subsets: ["latin"] });
+
 export const metadata: Metadata = {
-  title: "Pintualiado | Tienda de Pinturas en Caracas",
-  description: "Tu tienda de pinturas de confianza. Ofrecemos la mejor variedad de pinturas y acabados para tu hogar u oficina. Visítanos en Caracas.",
+  title: "Pintualiado | Pintura Automotriz, Arquitectónica e Industrial",
+  description: "Expertos en acabados profesionales. Distribuidores de las mejores marcas en pintura automotriz, insumos industriales, impermeabilizantes y herramientas.",
 };
 
 export default function RootLayout({
@@ -14,11 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <body className="antialiased">
+    <html lang="es" className="scroll-smooth overflow-x-hidden">
+      <body className={`${inter.className} bg-background text-foreground antialiased overflow-x-hidden`}>
         <ThemeProvider>
-          <div className="texture-overlay" />
+          <div className="fixed inset-0 z-[1] opacity-30 pointer-events-none texture-overlay"></div>
           {children}
+          <WhatsAppButton />
         </ThemeProvider>
         <VisualEditsMessenger />
       </body>
