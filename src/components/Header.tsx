@@ -22,9 +22,9 @@ export function Header() {
 
   const menuItems = [
     { name: "Inicio", href: "#inicio" },
+    { name: "Nosotros", href: "#nosotros" },
     { name: "Productos", href: "#productos" },
     { name: "Servicios", href: "#servicios" },
-    { name: "Nosotros", href: "#nosotros" },
     { name: "Ubicación", href: "#ubicacion" },
     { name: "Contacto", href: "#contacto" },
   ];

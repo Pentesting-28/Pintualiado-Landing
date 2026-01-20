@@ -16,9 +16,9 @@ export default function Home() {
       <main>
         <HeroSection />
         {/* <BrandsCarousel /> */}
+        <AboutSection />
         <ProductsSection />
         <ServicesSection />
-        <AboutSection />
         {/* <InstagramFeed /> */}
         <LocationSection />
         <ContactSection />

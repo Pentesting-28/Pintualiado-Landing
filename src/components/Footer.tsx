@@ -58,9 +58,10 @@ export function Footer() {
             <ul className="space-y-3">
               {[
                 { name: "Inicio", href: "#inicio" },
+                { name: "Nosotros", href: "#nosotros" },
                 { name: "Productos", href: "#productos" },
                 { name: "Servicios", href: "#servicios" },
-                { name: "Nosotros", href: "#nosotros" },
+                { name: "Ubicación", href: "#ubicacion" },
                 { name: "Contacto", href: "#contacto" },
               ].map((link, index) => (
                 <li key={index}>
@@ -110,13 +111,10 @@ export function Footer() {
 
       <div className="border-t border-white/5 bg-background/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm text-center sm:text-left">
-              © {currentYear} Pintualiado. C.A. Todos los derechos reservados.
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+            <p className="text-center sm:text-left">
+              © {new Date().getFullYear()} Pintualiado. Todos los derechos reservados.
             </p>
-            <div className="flex items-center gap-6 text-sm">
-              <span className="text-muted-foreground opacity-50">Designed with precision</span>
-            </div>
           </div>
         </div>
       </div>
