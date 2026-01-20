@@ -19,7 +19,7 @@ export default function Home() {
         <ProductsSection />
         <ServicesSection />
         <AboutSection />
-        <InstagramFeed />
+        {/* <InstagramFeed /> */}
         <LocationSection />
         <ContactSection />
       </main>

@@ -2,47 +2,52 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Instagram, ExternalLink, Heart, MessageCircle } from "lucide-react";
+import { Instagram, ExternalLink, Heart, MessageCircle, Tag } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/context/ThemeContext";
 
 export function InstagramFeed() {
   const { theme, mounted } = useTheme();
-  const [posts, setPosts] = useState<{ id: string; imageUrl: string; postUrl: string; isVideo?: boolean; videoUrl?: string; likes?: number; comments?: number }[]>([]);
+  // Using loose typing for state to match the service response structure without strict imports here
+  const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [playingVideos, setPlayingVideos] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     async function fetchPosts() {
-      // Fallback posts matching the new design aesthetic
+      // Fallback posts with categories
       const fallbackPosts = [
         {
           id: 'f1',
           imageUrl: 'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=400&h=400&fit=crop',
           postUrl: 'https://www.instagram.com/pintualiado/',
           likes: 45,
-          comments: 2
+          comments: 2,
+          category: ['Automotriz']
         },
         {
           id: 'f2',
           imageUrl: 'https://images.unsplash.com/photo-1599658880436-161770d99dc0?w=400&h=400&fit=crop',
           postUrl: 'https://www.instagram.com/pintualiado/',
           likes: 32,
-          comments: 0
+          comments: 0,
+          category: ['Insumos']
         },
         {
           id: 'f3',
           imageUrl: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&h=400&fit=crop',
           postUrl: 'https://www.instagram.com/pintualiado/',
           likes: 67,
-          comments: 5
+          comments: 5,
+          category: ['Arquitectónica']
         },
         {
           id: 'f4',
           imageUrl: 'https://images.unsplash.com/photo-1502429892517-50798150392f?w=400&h=400&fit=crop',
           postUrl: 'https://www.instagram.com/pintualiado/',
           likes: 51,
-          comments: 3
+          comments: 3,
+          category: ['Automotriz', 'Oferta']
         },
       ];
 
@@ -70,7 +75,7 @@ export function InstagramFeed() {
   }, []);
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-card border-y border-white/5 overflow-hidden">
+    <section className="py-16 sm:py-20 lg:py-24 bg-card/50 border-y border-white/5 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col sm:flex-row justify-between items-end gap-6 mb-10 sm:mb-12">
           <motion.div
@@ -80,11 +85,12 @@ export function InstagramFeed() {
             className="max-w-2xl"
           >
             <span className="inline-block text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider mb-2">
-              Síguenos en Instagram
+              Nuestra Vitrina Virtual
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-              @pintualiado
+              Último en @pintualiado
             </h2>
+            <p className="text-muted-foreground mt-2">Descubre ofertas recientes, trabajos realizados y nuevos productos.</p>
           </motion.div>
 
           <motion.a
@@ -120,7 +126,7 @@ export function InstagramFeed() {
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer"
+                className="group relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl hover:shadow-accent/10 block border border-white/5"
                 onMouseEnter={(e) => {
                   if (post.isVideo) {
                     const video = e.currentTarget.querySelector('video');
@@ -179,16 +185,34 @@ export function InstagramFeed() {
                   />
                 )}
 
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 text-white z-30">
-                  <div className="flex items-center gap-1.5 font-semibold">
-                    <Heart className="w-5 h-5" fill="white" />
-                    <span className="text-sm">{post.likes || 0}</span>
+                {/* Categories Badge */}
+                {post.category && post.category.length > 0 && (
+                  <div className="absolute top-3 left-3 flex flex-wrap gap-1 z-30">
+                    {post.category.slice(0, 2).map((cat: string, i: number) => (
+                      <span key={i} className="bg-accent/90 backdrop-blur-md text-white px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                        {cat}
+                      </span>
+                    ))}
                   </div>
-                  {(post.comments !== undefined) && (
-                    <div className="flex items-center gap-1.5 font-semibold">
-                      <MessageCircle className="w-5 h-5" fill="white" />
-                      <span className="text-sm">{post.comments || 0}</span>
+                )}
+
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 text-white z-20 p-4 text-center">
+                  <div className="flex items-center gap-4 mb-1">
+                    <div className="flex items-center gap-1.5 font-bold">
+                      <Heart className="w-5 h-5 text-accent fill-accent" />
+                      <span className="text-sm">{post.likes || 0}</span>
                     </div>
+                    {(post.comments !== undefined) && (
+                      <div className="flex items-center gap-1.5 font-bold">
+                        <MessageCircle className="w-5 h-5 text-white" />
+                        <span className="text-sm">{post.comments || 0}</span>
+                      </div>
+                    )}
+                  </div>
+                  {post.caption && (
+                    <p className="text-xs text-white/90 line-clamp-3 px-2 font-medium">
+                      {post.caption}
+                    </p>
                   )}
                 </div>
               </motion.a>

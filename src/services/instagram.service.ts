@@ -6,6 +6,7 @@ export interface InstagramPost {
     caption?: string;
     isVideo?: boolean;
     videoUrl?: string;
+    category?: string[]; // Categorias detectadas
 }
 
 interface InstagramAPIResponse {
@@ -36,8 +37,29 @@ interface InstagramAPIResponse {
     };
 }
 
+const KEYWORDS = {
+    'Automotriz': ['automotriz', 'carro', 'vehículo', 'repintado', 'bicapa', 'monocapa', 'latonería'],
+    'Arquitectónica': ['arquitectónica', 'casa', 'pared', 'interior', 'exterior', 'caucho', 'satinado', 'mate'],
+    'Industrial': ['industrial', 'epóxico', 'tráfico', 'anticorrosivo', 'piso'],
+    'Insumos': ['brocha', 'rodillo', 'lija', 'thinner', 'masilla', 'herramienta', 'cinta'],
+    'Esmaltes': ['esmalte', 'barniz', 'madera', 'metal', 'brillo']
+};
+
+function detectCategories(caption: string): string[] {
+    const lowerCaption = caption.toLowerCase();
+    const categories: Set<string> = new Set();
+
+    Object.entries(KEYWORDS).forEach(([category, terms]) => {
+        if (terms.some(term => lowerCaption.includes(term))) {
+            categories.add(category);
+        }
+    });
+
+    return Array.from(categories);
+}
+
 export const InstagramService = {
-    async getRecentPosts(username: string = 'pintualiado', limit: number = 6): Promise<InstagramPost[]> {
+    async getRecentPosts(username: string = 'pintualiado', limit: number = 8): Promise<InstagramPost[]> {
         try {
             const url = `https://www.instagram.com/api/v1/users/web_profile_info/?username=${username}`;
 
@@ -46,7 +68,6 @@ export const InstagramService = {
                 headers: {
                     'referer': 'https://www.instagram.com/',
                     'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 Instagram 12.0.0.16.90 (iPhone9,4; iOS 10_3_3; en_US; en-US; scale=2.61; gamut=wide; 1080x1920',
-                    // 'X-Requested-With': 'XMLHttpRequest',
                 },
                 next: { revalidate: 3600 }, // Cache por 1 hora
             });
@@ -69,14 +90,17 @@ export const InstagramService = {
             // Mapear a nuestro formato
             const posts: InstagramPost[] = edges.slice(0, limit).map((edge) => {
                 const node = edge.node;
+                const caption = node.edge_media_to_caption?.edges[0]?.node?.text || '';
+
                 return {
                     id: node.id,
                     imageUrl: node.display_url,
                     postUrl: `https://www.instagram.com/p/${node.shortcode}/`,
                     likes: node.edge_liked_by?.count,
-                    caption: node.edge_media_to_caption?.edges[0]?.node?.text || '',
+                    caption: caption,
                     isVideo: node.is_video || false,
                     videoUrl: node.video_url || undefined,
+                    category: detectCategories(caption)
                 };
             });
 
