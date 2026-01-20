@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { VisualEditsMessenger } from "orchids-visual-edits";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { BackToTopButton } from "@/components/BackToTopButton";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/context/ThemeContext";
 
@@ -23,7 +23,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="fixed inset-0 z-[1] opacity-30 pointer-events-none texture-overlay"></div>
           {children}
-          <WhatsAppButton />
+          <BackToTopButton />
         </ThemeProvider>
         <VisualEditsMessenger />
       </body>
