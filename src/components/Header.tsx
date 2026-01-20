@@ -78,11 +78,11 @@ export function Header() {
             </div>
 
             <a
-              href="tel:+584241234567"
+              href="tel:+584241890381"
               className="hidden sm:flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-full text-sm font-bold hover:bg-accent hover:text-white transition-all duration-300 shadow-lg hover:shadow-accent/20"
             >
               <Phone size={16} />
-              <span className="hidden lg:inline">Llámanos</span>
+              <span className="hidden lg:inline">0424-1890381</span>
             </a>
 
             <button

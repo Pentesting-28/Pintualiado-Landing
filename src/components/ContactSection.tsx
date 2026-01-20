@@ -27,7 +27,7 @@ export function ContactSection() {
 
             <div className="space-y-4 sm:space-y-6">
               {[
-                { icon: Phone, title: "Teléfono", desc: "Llámanos para atención inmediata", link: "tel:+584241234567", linkText: "+58 424 123 4567" },
+                { icon: Phone, title: "Teléfonos", desc: "Llámanos para atención inmediata", link: "tel:+584241890381", linkText: "0424-1890381 / 0412-5843952" },
                 { icon: Mail, title: "Email", desc: "Escríbenos", link: "mailto:info@pintualiado.com", linkText: "info@pintualiado.com" },
                 { icon: MapPin, title: "Ubicación", desc: "Caracas, Venezuela", link: "https://maps.app.goo.gl/pLGyJ5RvEkBKvvzb8", linkText: "Ver en mapa" },
               ].map((item, index) => (
@@ -45,9 +45,19 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-semibold text-base sm:text-lg mb-1">{item.title}</h4>
                     <p className="text-muted-foreground text-sm sm:text-base">{item.desc}</p>
-                    <a href={item.link} className="text-accent text-sm sm:text-base hover:underline">
-                      {item.linkText}
-                    </a>
+                    <div className="flex flex-col gap-1">
+                      {item.title === "Teléfonos" ? (
+                        <>
+                          <a href="tel:+584241890381" className="text-accent text-sm sm:text-base hover:underline">0424-1890381</a>
+                          <a href="tel:+584125843952" className="text-accent text-sm sm:text-base hover:underline">0412-5843952</a>
+                          <a href="tel:+584140334156" className="text-accent text-sm sm:text-base hover:underline">0414-0334156</a>
+                        </>
+                      ) : (
+                        <a href={item.link} className="text-accent text-sm sm:text-base hover:underline">
+                          {item.linkText}
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -137,7 +147,7 @@ export function ContactSection() {
                   id="phone"
                   name="phone"
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-input bg-background/50 text-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm sm:text-base"
-                  placeholder="+58 424 123 4567"
+                  placeholder="0424-1890381"
                 />
               </div>
 
