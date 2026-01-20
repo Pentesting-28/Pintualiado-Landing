@@ -9,7 +9,7 @@ const products = [
     id: 1,
     name: "Pintura Automotriz",
     category: "Automotriz",
-    image: "https://images.unsplash.com/photo-1502429892517-50798150392f?w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=400&h=400&fit=crop",
     description: "Sistemas bicapa, monocapa y complementos para el repintado profesional.",
   },
   {
@@ -23,14 +23,14 @@ const products = [
     id: 3,
     name: "Pintura Industrial",
     category: "Industrial",
-    image: "https://images.unsplash.com/photo-1590486803833-ffc6f1448df3?w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1535930749574-1399327ce78f?w=400&h=400&fit=crop",
     description: "Recubrimientos epóxicos, de alto tráfico y protección anticorrosiva.",
   },
   {
     id: 4,
     name: "Insumos Afines",
     category: "Insumos",
-    image: "https://images.unsplash.com/photo-1621905252507-b354bcadc0d8?w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1599305090598-fe179d501227?w=400&h=400&fit=crop",
     description: "Thinner, lijas, masillas y todas las herramientas necesarias.",
   },
   {
@@ -44,7 +44,7 @@ const products = [
     id: 6,
     name: "Impermeabilizantes",
     category: "Especiales",
-    image: "https://images.unsplash.com/photo-1517646272486-a28f669f4bd4?w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=400&h=400&fit=crop",
     description: "Soluciones definitivas para filtraciones y humedad.",
   },
 ];
