@@ -42,6 +42,7 @@ export function WhatsAppModal({ isOpen, onClose }: WhatsAppModalProps) {
                                 <button
                                     onClick={onClose}
                                     className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
+                                    aria-label="Cerrar modal"
                                 >
                                     <X size={20} />
                                 </button>

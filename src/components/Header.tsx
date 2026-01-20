@@ -53,10 +53,10 @@ export function Header() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ease-in-out ${isMobileMenuOpen
-            ? "bg-background shadow-none"
-            : isScrolled
-              ? "bg-background/80 backdrop-blur-xl border-b border-white/5 py-2 shadow-sm"
-              : "bg-transparent py-4 sm:py-6"
+          ? "bg-background shadow-none"
+          : isScrolled
+            ? "bg-background/80 backdrop-blur-xl border-b border-white/5 py-2 shadow-sm"
+            : "bg-transparent py-4 sm:py-6"
           }`}
       >
         <div className="container mx-auto px-4 lg:px-6 relative z-[1002]">
@@ -93,10 +93,6 @@ export function Header() {
             </nav>
 
             <div className="flex items-center gap-3">
-              <div className="hidden md:flex items-center gap-2">
-                <div className="w-[1px] h-6 bg-white/10" />
-              </div>
-
               <button
                 onClick={() => setIsWhatsAppModalOpen(true)}
                 className="hidden sm:flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-[#25D366]/20 hover:scale-105 active:scale-95 group"

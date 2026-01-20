@@ -215,6 +215,7 @@ export function ProductsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center hover:bg-accent hover:text-white transition-colors"
+                        aria-label="Ver producto en Instagram"
                       >
                         <ExternalLink size={14} />
                       </a>
