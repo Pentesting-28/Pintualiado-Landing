@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, Paintbrush, Palette } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function HeroSection() {
@@ -100,36 +100,7 @@ export function HeroSection() {
                 />
               </div>
 
-              {/* Floating Cards */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="absolute -bottom-6 -left-6 bg-card/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/10 flex items-center gap-3"
-              >
-                <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
-                  <Paintbrush className="text-accent" size={24} />
-                </div>
-                <div>
-                  <p className="font-bold text-foreground">Pinturas</p>
-                  <p className="text-sm text-muted-foreground">Premium</p>
-                </div>
-              </motion.div>
 
-              <motion.div
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="absolute -top-4 -right-4 bg-card/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/10 flex items-center gap-3"
-              >
-                <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
-                  <Palette className="text-foreground" size={24} />
-                </div>
-                <div>
-                  <p className="font-bold text-foreground">Colores</p>
-                  <p className="text-sm text-muted-foreground">Variados</p>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
