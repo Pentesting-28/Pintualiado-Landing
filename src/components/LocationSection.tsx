@@ -110,7 +110,7 @@ export function LocationSection() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Ubicación de Pintualiado en Google Maps"
-            className="w-full sm:h-[350px] lg:h-[450px] border-0 grayscale hover:grayscale-0 transition-all duration-500"
+            className="w-full sm:h-[350px] lg:h-[450px] border-0"
           />
         </motion.div>
       </div>
